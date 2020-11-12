@@ -1,0 +1,79 @@
+Problem caused by your funds being low                           2114
+Problem with a lender or other company charging your account     2845
+Opening an account                                               2922
+Closing an account                                               3316
+Managing an account                                             14018
+omg where is my money aosidnoiandnaiosdnasd This is bullshit!! where is my money!!! I TRANSFERRED IT BUT IT JUST DISAPPEARED INTO THIN AIR. WHAT KIND OF A BANK ARE YOU? ARE YOU A BANK OR A THIEF? 	Money transfers 	43.32 %
+Checking or savings account 	21.26 %
+Bank account or service 	16.51 %
+Mortgage 	6.71 %
+Loan 	2.93 %
+Prepaid card 	2.51 %
+Other financial service 	2.43 %
+Debt collection 	2.27 %
+Credit reporting 	1.15 %
+Credit card 	0.92 %
+
+
+
+# Reducing dataframe to 30k entries
+# Need to reduce all categories by 80%
+
+percentage_reduction = 0.8
+
+# Debt Collection Reduction
+df_product_issue_and_complaint_reduced = df_product_issue_and_complaint_flt.drop(df_product_issue_and_complaint_flt[df_product_issue_and_complaint_flt['PRODUCT'] == 'Debt collection'].sample(frac=percentage_reduction).index)
+
+# Mortgage Reduction
+df_product_issue_and_complaint_reduced = \
+df_product_issue_and_complaint_reduced.drop(
+    df_product_issue_and_complaint_reduced[
+        df_product_issue_and_complaint_reduced['PRODUCT'] == 'Mortgage'].sample(frac=percentage_reduction).index)
+
+# Loan
+df_product_issue_and_complaint_reduced = \
+df_product_issue_and_complaint_reduced.drop(
+    df_product_issue_and_complaint_reduced[
+        df_product_issue_and_complaint_reduced['PRODUCT'] == 'Loan'].sample(frac=percentage_reduction).index)
+
+# Credit reporting
+df_product_issue_and_complaint_reduced = \
+df_product_issue_and_complaint_reduced.drop(
+    df_product_issue_and_complaint_reduced[
+        df_product_issue_and_complaint_reduced['PRODUCT'] == 'Credit reporting'].sample(frac=percentage_reduction).index)
+
+# Credit card
+df_product_issue_and_complaint_reduced = \
+df_product_issue_and_complaint_reduced.drop(
+    df_product_issue_and_complaint_reduced[
+        df_product_issue_and_complaint_reduced['PRODUCT'] == 'Credit card'].sample(frac=percentage_reduction).index)
+
+# Checking or savings account
+df_product_issue_and_complaint_reduced = \
+df_product_issue_and_complaint_reduced.drop(
+    df_product_issue_and_complaint_reduced[
+        df_product_issue_and_complaint_reduced['PRODUCT'] == 'Checking or savings account'].sample(frac=percentage_reduction).index)
+
+# Bank account or service
+df_product_issue_and_complaint_reduced = \
+df_product_issue_and_complaint_reduced.drop(
+    df_product_issue_and_complaint_reduced[
+        df_product_issue_and_complaint_reduced['PRODUCT'] == 'Bank account or service'].sample(frac=percentage_reduction).index)
+
+# # Money transfers (too little to be reduced)
+# df_product_issue_and_complaint_reduced = \
+# df_product_issue_and_complaint_reduced.drop(
+#     df_product_issue_and_complaint_reduced[
+#         df_product_issue_and_complaint_reduced['PRODUCT'] == 'Money transfers'].sample(frac=.9).index)
+
+# # Prepaid card (too little to be reduced)
+# df_product_issue_and_complaint_reduced = \
+# df_product_issue_and_complaint_reduced.drop(
+#     df_product_issue_and_complaint_reduced[
+#         df_product_issue_and_complaint_reduced['PRODUCT'] == 'Prepaid card'].sample(frac=.9).index)
+
+# # Other financial service (too little to be reduced)
+# df_product_issue_and_complaint_reduced = \
+# df_product_issue_and_complaint_reduced.drop(
+#     df_product_issue_and_complaint_reduced[
+#         df_product_issue_and_complaint_reduced['PRODUCT'] == 'Other financial service'].sample(frac=.9).index)
